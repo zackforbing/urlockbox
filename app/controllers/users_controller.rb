@@ -1,4 +1,4 @@
-class UserController < ApplicationController
+class UsersController < ApplicationController
 
   def new
     @user = User.new
@@ -9,7 +9,7 @@ class UserController < ApplicationController
 
     if @user.save
       session[:user_id] = @user.id
-      redirect_to @user
+      redirect_to root_path
     end
   end
 
