@@ -21,6 +21,18 @@ class LinksController < ApplicationController
     end
   end
 
+  def toggle_read
+    link = Link.find(params[:id])
+    if link.read
+      link.read = false
+      link.save
+    else
+      link.read = true
+      link.save
+    end
+    redirect_to root_path
+  end
+
   private
 
   def validate_link(link)
@@ -33,6 +45,6 @@ class LinksController < ApplicationController
   end
 
   def link_params
-    params.require(:link).permit(:id, :title, :url, :read, :authenticity_token)
+    params.require(:link).permit(:title, :url, :read)
   end
 end

@@ -10,4 +10,6 @@ Rails.application.routes.draw do
 
   resources :users, only: [:new, :create]
   resources :links, only: [:create, :update]
+  get '/links/:id', to: 'links#create'
+  put '/links/:id/toggle', to: 'links#toggle_read', as: 'toggle_read'
 end

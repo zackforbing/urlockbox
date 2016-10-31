@@ -15,15 +15,15 @@
       <th>URL</th>
       <th>Read?</th>
     </tr>
-    <% @links.each do |link, index| %>
+    <% @links.each do |link| %>
       <tr id="link_<%= link.id %>">
         <%  %>
         <td><%= link.title %></td>
         <td><%= link_to link.url, link.url %></td>
         <% if link.read %>
-          <td><%= link_to "Mark as Unread", link_path(link: { read: false }), method: :put %></td>
+          <td><%= link_to "Mark as Unread", toggle_read_path(link), method: :put %></td>
           <% else %>
-          <td><%= link_to "Mark as Read", link_path(link.id), method: :put, params: { read: true } %></td>
+          <td><%= link_to "Mark as Read", toggle_read_path(link), method: :put %></td>
         <% end %>
       </tr>
     <% end %>
