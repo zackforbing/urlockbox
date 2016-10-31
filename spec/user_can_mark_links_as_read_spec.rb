@@ -13,18 +13,19 @@ RSpec.feature 'User can mark Link as read' do
     expect(page).to have_link('http://www.link1.com', href: 'http://www.link1.com')
     expect(page).to have_link('http://www.link2.com', href: 'http://www.link2.com')
     expect(page).to have_link('http://www.link3.com', href: 'http://www.link3.com')
-    within("#link_1") do
+  
+    within("#link_#{link1.id}") do
       click_on 'Mark as Read'
     end
 
     expect(current_path).to eq(root_path)
-    within("#link_1") do
+    within("#link_#{link1.id}") do
       expect(page).to have_content("Mark as Unread")
     end
-    within("#link_2") do
+    within("#link_#{link2.id}") do
       expect(page).to have_content("Mark as Read")
     end
-    within("#link_3") do
+    within("#link_#{link3.id}") do
       expect(page).to have_content("Mark as Read")
     end
   end
