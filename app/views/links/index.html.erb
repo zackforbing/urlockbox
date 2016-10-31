@@ -2,7 +2,7 @@
   <h1><%= link_to "Log In", login_path %> or <%= link_to "Sign Up", new_user_path %></h1>
 <% else %>
   <h6><%= "Logged in as #{current_user.email}" %> <%= link_to "Sign Out", logout_path, method: :delete %></h6>
-  <%= form_for(:link, url: new_link_path) do |f| %>
+  <%= form_for(:link, url: links_path) do |f| %>
     <%= f.label :title %>
     <%= f.text_field :title %>
     <%= f.label :url%>
