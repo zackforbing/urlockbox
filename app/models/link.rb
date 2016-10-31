@@ -3,6 +3,7 @@ require 'uri'
 class Link < ApplicationRecord
   validates :title, presence: true
   validates :url, presence: true
+  validates :read, default: false
 
 
   def valid?(url)

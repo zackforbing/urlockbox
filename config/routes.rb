@@ -1,5 +1,7 @@
 Rails.application.routes.draw do
 
+  get 'link/create'
+
   root to: 'links#index'
 
   get '/login', to: 'sessions#new'
@@ -7,4 +9,5 @@ Rails.application.routes.draw do
   delete '/logout', to: 'sessions#destroy'
 
   resources :users, only: [:new, :create]
+  resources :links, only: [:create]
 end
