@@ -8,6 +8,7 @@ RSpec.feature 'Visitor can create an account' do
 
     fill_in 'Email', with: 'zackforbing@gmail.com'
     fill_in 'Password', with: 'hithere'
+    fill_in 'Confirm Password', with: 'hithere'
     click_button 'Submit'
   end
 end
