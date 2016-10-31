@@ -15,7 +15,6 @@ class LinksController < ApplicationController
   private
 
   def validate_link(link)
-    require "pry"; binding.pry
     if link.valid?
       link.save
       flash[:success] = "link added!"
