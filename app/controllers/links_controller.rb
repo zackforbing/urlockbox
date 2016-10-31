@@ -12,6 +12,10 @@ class LinksController < ApplicationController
     redirect_to root_path
   end
 
+  def edit
+    @link = Link.find(params[:id])
+  end
+
   def update
     link = Link.find(params[:id])
     if link.update(link_params)
@@ -19,6 +23,7 @@ class LinksController < ApplicationController
     else
       flash[:error] = "'#{link.title}' was not updated."
     end
+    redirect_to root_path
   end
 
   def toggle_read
