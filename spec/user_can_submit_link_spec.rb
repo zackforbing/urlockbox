@@ -10,9 +10,10 @@ RSpec.feature 'User can submit a Link' do
     fill_in 'Title', with: 'test'
     fill_in 'Url', with: 'http://www.google.com'
     click_on 'Add Link'
-    require "pry"; binding.pry
-    save_and_open_page
+    
     expect(current_path).to eq(root_path)
-    expect(page).to have_link('test', href: 'http://www.google.com')
+    expect(page).to have_content('test')
+    expect(page).to have_link('http://www.google.com', href: 'http://www.google.com')
+    expect(page).to have_content('false')
   end
 end

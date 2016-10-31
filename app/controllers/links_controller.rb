@@ -1,6 +1,7 @@
 class LinksController < ApplicationController
 
   def index
+    @user = current_user
     @links = current_user.links if current_user
   end
 
@@ -14,8 +15,10 @@ class LinksController < ApplicationController
   private
 
   def validate_link(link)
+    require "pry"; binding.pry
     if link.valid?
       link.save
+      flash[:success] = "link added!"
     else
       flash[:error] = link.errors.full_messages.join(', ')
     end

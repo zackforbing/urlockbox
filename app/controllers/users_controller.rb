@@ -11,7 +11,7 @@ class UsersController < ApplicationController
       session[:user_id] = @user.id
       redirect_to root_path
     else
-      @user.errors.full_messages.join(', ')
+      flash[:error] = @user.errors.full_messages.join(', ')
     end
   end
 
