@@ -13,7 +13,12 @@ class LinksController < ApplicationController
   end
 
   def update
-    link = Link.find
+    link = Link.find(params[:id])
+    if link.update(link_params)
+      flash[:notice] = "'#{link.title}' updated."
+    else
+      flash[:error] = "'#{link.title}' was not updated."
+    end
   end
 
   private
@@ -25,5 +30,9 @@ class LinksController < ApplicationController
     else
       flash[:error] = link.errors.full_messages.join(', ')
     end
+  end
+
+  def link_params
+    params.require(:link).permit(:id, :title, :url, :read, :authenticity_token)
   end
 end
