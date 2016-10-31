@@ -12,6 +12,10 @@ class LinksController < ApplicationController
     redirect_to root_path
   end
 
+  def update
+    link = Link.find
+  end
+
   private
 
   def validate_link(link)

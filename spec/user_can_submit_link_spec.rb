@@ -14,6 +14,6 @@ RSpec.feature 'User can submit a Link' do
     expect(current_path).to eq(root_path)
     expect(page).to have_content('test')
     expect(page).to have_link('http://www.google.com', href: 'http://www.google.com')
-    expect(page).to have_content('false')
+    expect(page).to have_content('Mark as Read')
   end
 end

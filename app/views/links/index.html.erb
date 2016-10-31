@@ -20,7 +20,10 @@
         <td><%= link.title %></td>
         <td><%= link_to link.url, link.url %></td>
         <% if link.read %>
-          <%= link_to "Mark as Unread", link_path() %>
+          <td><%= link_to "Mark as Unread", link_path(link.id), method: :put, params: { read: false } %></td>
+          <% else %>
+          <td><%= link_to "Mark as Read", link_path(link.id), method: :put, params: { read: true } %></td>
+        <% end %>
       </tr>
     <% end %>
   </table>
