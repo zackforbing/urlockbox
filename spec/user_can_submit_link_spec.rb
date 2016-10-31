@@ -7,6 +7,7 @@ RSpec.feature 'User can submit a Link' do
 
     visit root_path
 
-    expect(page).to have_content('Sign Out')
+    fill_in 'Title', with: 'test'
+    fill_in 'Url', with: 'http://www.google.com'
   end
 end
