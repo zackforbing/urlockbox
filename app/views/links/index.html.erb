@@ -9,7 +9,7 @@
     <%= f.text_field :url %>
     <%= f.submit "Add Link" %>
   <% end %>
-  <table>
+  <table id='link-table'>
     <tr>
       <th>Title</th>
       <th>URL</th>
@@ -19,7 +19,8 @@
       <tr>
         <td><%= link.title %></td>
         <td><%= link_to link.url, link.url %></td>
-        <td><%= link.read %></td>
+        <% if link.read %>
+          <%= link_to "Mark as Unread", link_path() %>
       </tr>
     <% end %>
   </table>

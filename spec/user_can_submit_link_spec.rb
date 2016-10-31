@@ -2,8 +2,7 @@ require 'rails_helper'
 
 RSpec.feature 'User can submit a Link' do
   scenario 'on visiting root they are prompted to sign up or login and can do either' do
-    user = create(:user)
-    create(:link, 3)
+    user = User.create!(email: 'andrew@turing.io', password: 'test', password_confirmation: 'test')
     page.set_rack_session(user_id: user.id)
 
     visit root_path
