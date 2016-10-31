@@ -6,7 +6,21 @@
     <%= f.label :title %>
     <%= f.text_field :title %>
     <%= f.label :url%>
-    <%= f.password_field :url %>
+    <%= f.text_field :url %>
     <%= f.submit "Add Link" %>
   <% end %>
+  <table>
+    <tr>
+      <th>Title</th>
+      <th>URL</th>
+      <th>Read?</th>
+    </tr>
+    <% @links.each do |link| %>
+      <tr>
+        <td><%= link.title %></td>
+        <td><%= link_to link.url, link.url %></td>
+        <td><%= link.read %></td>
+      </tr>
+    <% end %>
+  </table>
 <% end %>
