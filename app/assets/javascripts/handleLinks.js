@@ -45,7 +45,7 @@ function filterBySearch() {
 }
 
 function filterByStatus(e) {
-  debugger
+  console.log('hi');
   e.preventDefault();
   let links = $('.link');
   if (this.id === "read-filter") {
