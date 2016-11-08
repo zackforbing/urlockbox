@@ -1,6 +1,7 @@
 $(document).ready(() => {
   $('.read-btn').on('click', toggleReadStatus);
   $('#search-links').on('keyup', filterBySearch);
+  $('#unread-filter', '#read-filter').on('click', filterBySearch)
 });
 
 function toggleReadStatus(e) {
@@ -29,10 +30,9 @@ function toggleReadStatus(e) {
 
 function filterBySearch() {
   let searchQuery = $('#search-links').val();
-  debugger
   let links = $('.link');
 
-  links.each(function(link) {
+  links.each((link) => {
     let title = $(this).find(".editable-title").text();
     let url = $(this).find(".editable-url").text();
 
@@ -44,7 +44,15 @@ function filterBySearch() {
   });
 }
 
+function filterByStatus(e) {
+  e.preventDefault();
+  let links = $('.link');
+  let status =
 
+  links.each((link) => {
+    
+  });
+}
 
 function handleError(error) {
   console.log(error);
