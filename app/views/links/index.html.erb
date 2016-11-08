@@ -17,15 +17,15 @@
       <th>Edit</th>
     </tr>
     <% @links.each do |link| %>
-      <tr id="link_<%= link.id %>">
-        <td><%= link.title %></td>
-        <td><%= link_to link.url, link.url %></td>
+      <tr id="<%= link.id %>">
+        <td class="editable-title" contenteditable='true'><%= link.title %></td>
+        <td class="editable-url" contenteditable='true'><%= link_to link.url, link.url %></td>
         <% if link.read %>
-          <td><%= link_to "Mark as Unread", toggle_read_path(link), method: :put %></td>
+          <td class="read-btn"><%= button_to "Mark as Unread", toggle_read_path(link), method: :put %></td>
         <% else %>
-          <td><%= link_to "Mark as Read", toggle_read_path(link), method: :put %></td>
+          <td class="read-btn"><%= button_to "Mark as Read", toggle_read_path(link), method: :put %></td>
         <% end %>
-        <td><%= button_to "Edit Link", edit_link_path(link), method: :get %>
+        <td class="edit-link-btn"><%= button_to "Edit Link", edit_link_path(link), method: :get %>
       </tr>
     <% end %>
   </table>
