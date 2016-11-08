@@ -2,7 +2,7 @@ class LinksController < ApplicationController
 
   def index
     @user = current_user
-    @links = current_user.links if current_user
+    @links = current_user.links.order(title: :asc) if current_user
   end
 
   def create
@@ -21,18 +21,6 @@ class LinksController < ApplicationController
       flash[:notice] = "'#{link.title}' updated."
     else
       flash[:error] = "'#{link.title}' was not updated."
-    end
-    redirect_to root_path
-  end
-
-  def toggle_read
-    link = Link.find(params[:id])
-    if link.read
-      link.read = false
-      link.save
-    else
-      link.read = true
-      link.save
     end
     redirect_to root_path
   end
