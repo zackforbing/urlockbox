@@ -17,9 +17,11 @@ function toggleReadStatus(e) {
     if ($link.data("read")) {
       $link.data("read",false);
       $link.find('.read-btn').prop('value', 'Mark as Read');
+      $link.removeClass('link-read-true');
     } else {
       $link.data("read",true);
       $link.find('.read-btn').prop('value', 'Mark as Unread');
+      $link.addClass('link-read-true');
     }
   });
 }
