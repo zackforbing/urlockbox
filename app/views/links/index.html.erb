@@ -9,6 +9,9 @@
     <%= f.text_field :url %>
     <%= f.submit "Add Link" %>
   <% end %>
+  <br>
+  <input type="text" class="form-control" placeholder="Search Links" id="search-links">
+  <br>
   <table id='link-table'>
     <tr>
       <th>Title</th>
@@ -17,7 +20,7 @@
       <th>Edit</th>
     </tr>
     <% @links.each do |link| %>
-      <tr data-id="<%= link.id %>" data-read="<%= link.read %>" class="link-read-<%= link.read %>">
+      <tr data-id="<%= link.id %>" data-read="<%= link.read %>" class="link link-read-<%= link.read %>">
         <td class="editable-title" contenteditable='true'><%= link.title %></td>
         <td class="editable-url" contenteditable='true'><%= link_to link.url, link.url %></td>
         <% if link.read %>

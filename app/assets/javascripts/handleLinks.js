@@ -26,6 +26,22 @@ function toggleReadStatus(e) {
   });
 }
 
+function filterBySearch() {
+  let searchQuery = $('#search').val();
+  let links = $('.link');
+
+  links.each(function(link) {
+    let title = $(this).find(".editable-title").text();
+    let url = $(this).find(".editable-url").text();
+    
+    if (title.includes(searchQuery) || url.includes(searchQuery)) {
+      $(this).show();
+    } else {
+      $(this).hide();
+    }
+  });
+}
+
 function handleError(error) {
   console.log(error);
 }
