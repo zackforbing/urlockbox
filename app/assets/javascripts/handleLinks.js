@@ -20,12 +20,11 @@ function toggleReadStatus(e) {
   .fail(handleError)
   .success(() => {
     if ($link.data("read")) {
-
-      $link.data('read', true);
-      $link.find('read-btn').html("Mark as Unread");
-    } else {
       $link.data('read', false);
-      $link.find('read-btn').html("Mark as Read");
+      $link.find('.read-btn').prop('value', 'Mark as Unread');
+    } else {
+      $link.data('read', true);
+      $link.find('.read-btn').prop('value', 'Mark as Read');
     }
   });
 }
