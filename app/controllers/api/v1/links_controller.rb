@@ -1,19 +1,4 @@
-class LinksController < ApplicationController
-
-  def index
-    @user = current_user
-    @links = current_user.links if current_user
-  end
-
-  def create
-    link = Link.new(title: params[:link][:title], url: params[:link][:url], user: current_user)
-    validate_link(link)
-    redirect_to root_path
-  end
-
-  def edit
-    @link = Link.find(params[:id])
-  end
+class Api::V1::LinksController < ApplicationController
 
   def update
     link = Link.find(params[:id])
@@ -38,15 +23,6 @@ class LinksController < ApplicationController
   end
 
   private
-
-  def validate_link(link)
-    if link.valid?
-      link.save
-      flash[:success] = "link added!"
-    else
-      flash[:error] = link.errors.full_messages.join(', ')
-    end
-  end
 
   def link_params
     params.require(:link).permit(:id, :title, :url, :read)
