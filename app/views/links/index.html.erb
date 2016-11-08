@@ -17,7 +17,7 @@
       <th>Edit</th>
     </tr>
     <% @links.each do |link| %>
-      <tr id="<%= link.id %>">
+      <tr data-id="<%= link.id %>" data-read="<%= link.read %>">
         <td class="editable-title" contenteditable='true'><%= link.title %></td>
         <td class="editable-url" contenteditable='true'><%= link_to link.url, link.url %></td>
         <% if link.read %>

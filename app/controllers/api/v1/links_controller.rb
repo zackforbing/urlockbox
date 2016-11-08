@@ -10,18 +10,6 @@ class Api::V1::LinksController < ApplicationController
     redirect_to root_path
   end
 
-  def toggle_read
-    link = Link.find(params[:id])
-    if link.read
-      link.read = false
-      link.save
-    else
-      link.read = true
-      link.save
-    end
-    redirect_to root_path
-  end
-
   private
 
   def link_params

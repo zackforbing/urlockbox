@@ -1,11 +1,13 @@
 $(document).ready(() => {
-  $('.read-btn').on('click', updateReadStatus);
+  $('.read-btn').on('click', toggleReadStatus);
 });
 
-function toggleReadStatus() {
+function toggleReadStatus(e) {
   e.preventDefault();
   let $link = $(this).closest("tr");
-  let linkParams = 
+  let linkParams = {
+    read: !$link.data("read")
+  };
 
   $.ajax( {
     url: "api/v1/links/" + $link.data("id"),
@@ -13,8 +15,13 @@ function toggleReadStatus() {
     type: "put"
   })
   .fail(handleError);
+  .success();
 }
 
 function handleError(error) {
   console.log(error);
 }
+
+
+// title: $(this).parent().find(".editable-title").html(),
+// url: $(this).parent().find(".editable-url").html()
