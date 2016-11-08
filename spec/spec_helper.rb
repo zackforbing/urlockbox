@@ -16,7 +16,8 @@
 # users commonly want.
 #
 # See http://rubydoc.info/gems/rspec-core/RSpec/Core/Configuration
-require "rack_session_access/capybara"
+require 'rack_session_access/capybara'
+require 'shoulda/matchers'
 
 RSpec.configure do |config|
   # rspec-expectations config goes here. You can use an alternate
