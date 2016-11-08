@@ -1,5 +1,6 @@
 $(document).ready(() => {
   $('.read-btn').on('click', toggleReadStatus);
+  $('#search-links').on('keyup', filterBySearch);
 });
 
 function toggleReadStatus(e) {
@@ -27,13 +28,14 @@ function toggleReadStatus(e) {
 }
 
 function filterBySearch() {
-  let searchQuery = $('#search').val();
+  let searchQuery = $('#search-links').val();
+  debugger
   let links = $('.link');
 
   links.each(function(link) {
     let title = $(this).find(".editable-title").text();
     let url = $(this).find(".editable-url").text();
-    
+
     if (title.includes(searchQuery) || url.includes(searchQuery)) {
       $(this).show();
     } else {
@@ -42,10 +44,8 @@ function filterBySearch() {
   });
 }
 
+
+
 function handleError(error) {
   console.log(error);
 }
-
-
-// title: $(this).parent().find(".editable-title").html(),
-// url: $(this).parent().find(".editable-url").html()
