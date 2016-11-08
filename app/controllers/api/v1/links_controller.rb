@@ -1,13 +1,15 @@
 class Api::V1::LinksController < ApplicationController
+  protect_from_forgery with: :null_session
+  respond_to :json
 
   def update
     link = Link.find(params[:id])
-    if link.update(link_params) && link.valid?
-      flash[:notice] = "'#{link.title}' updated."
+    require "pry"; binding.pry
+    if link.update_attributes(link_params) && link.valid?
+      render json: link
     else
-      flash[:error] = "'#{link.title}' was not updated."
+      render status: 500
     end
-    redirect_to root_path
   end
 
   private
