@@ -13,20 +13,19 @@ function toggleReadStatus(e) {
 
   $.ajax( {
     url: `api/v1/links/${$link.data("id")}`,
-    data: { link: { title: $(this).parent().find(".editable-title").html(),
-                    url: $(this).parent().find(".editable-url").html(),
-                    read: !$link.data("read")} },
+    data: { link: { read: !$link.data("read")} },
     type: "put",
     dataType: "json"
   })
   .fail(handleError)
   .success(() => {
     if ($link.data("read")) {
-      $link.toggleClass('read-false read-true');
+
+      $link.data('read', true);
       $link.find('read-btn').html("Mark as Unread");
     } else {
-      $link.toggleClass('read-true read-false');
-      $link.find('read-btn').html("Mark as Unread");
+      $link.data('read', false);
+      $link.find('read-btn').html("Mark as Read");
     }
   });
 }

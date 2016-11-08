@@ -4,8 +4,7 @@ class Api::V1::LinksController < ApplicationController
 
   def update
     link = Link.find(params[:id])
-    require "pry"; binding.pry
-    if link.update_attributes(link_params) && link.valid?
+    if link.update(link_params) && link.valid?
       render json: link
     else
       render status: 500
