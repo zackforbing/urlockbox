@@ -5,11 +5,6 @@ $(document).ready(() => {
 function toggleReadStatus(e) {
   e.preventDefault();
   let $link = $(this).closest("tr");
-  let linkParams = {
-    link: {
-      read: !$link.data("read")
-    }
-  };
 
   $.ajax( {
     url: `api/v1/links/${$link.data("id")}`,
@@ -20,11 +15,11 @@ function toggleReadStatus(e) {
   .fail(handleError)
   .success(() => {
     if ($link.data("read")) {
-      $link.data('read', false);
-      $link.find('.read-btn').prop('value', 'Mark as Unread');
-    } else {
-      $link.data('read', true);
+      $link.data("read",false);
       $link.find('.read-btn').prop('value', 'Mark as Read');
+    } else {
+      $link.data("read",true);
+      $link.find('.read-btn').prop('value', 'Mark as Unread');
     }
   });
 }
