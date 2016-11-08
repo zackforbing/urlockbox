@@ -1,39 +1,35 @@
-<% if current_user.nil? %>
-  <h1><%= link_to "Log In", login_path %> or <%= link_to "Sign Up", new_user_path %></h1>
-<% else %>
-  <h6><%= "Logged in as #{current_user.email}" %> <%= link_to "Sign Out", logout_path, method: :delete %></h6>
-  <%= form_for(:link, url: links_path) do |f| %>
-    <%= f.label :title %>
-    <%= f.text_field :title %>
-    <%= f.label :url%>
-    <%= f.text_field :url %>
-    <%= f.submit "Add Link" %>
-  <% end %>
-  <br>
-  <input type="text" class="form-control" placeholder="Search Links" id="search-links">
-  <button id="read-filter">See All Read Links</button>
-  <button id="unread-filter">See All Unread Links</button>
-  <button id="show-all">See All Links</button>
-  <br>
-  <br>
-  <table id='link-table'>
-    <tr>
-      <th>Title</th>
-      <th>URL</th>
-      <th>Read?</th>
-      <th>Edit</th>
-    </tr>
-    <% @links.each do |link| %>
-      <tr data-id="<%= link.id %>" data-read="<%= link.read %>" class="link link-read-<%= link.read %>">
-        <td class="editable-title" contenteditable='true'><%= link.title %></td>
-        <td class="editable-url" contenteditable='true'><%= link_to link.url, link.url %></td>
-        <% if link.read %>
-        <td><button class="read-btn">Mark as Unread</button></td>
-      <% else %>
-        <td><button class="read-btn">Mark as Read</button></td>
-        <% end %>
-          <td><%= button_to "Edit Link", edit_link_path(link), method: :get, class: 'edit-btn' %>
-      </tr>
-    <% end %>
-  </table>
+<h6><%= "Logged in as #{current_user.email}" %> <%= link_to "Sign Out", logout_path, method: :delete %></h6>
+<%= form_for(:link, url: links_path) do |f| %>
+  <%= f.label :title %>
+  <%= f.text_field :title %>
+  <%= f.label :url%>
+  <%= f.text_field :url %>
+  <%= f.submit "Add Link" %>
 <% end %>
+<br>
+<input type="text" class="form-control" placeholder="Search Links" id="search-links">
+<button id="read-filter">See All Read Links</button>
+<button id="unread-filter">See All Unread Links</button>
+<button id="show-all">See All Links</button>
+<br>
+<br>
+<table id='link-table'>
+  <tr>
+    <th>Title</th>
+    <th>URL</th>
+    <th>Read?</th>
+    <th>Edit</th>
+  </tr>
+  <% @links.each do |link| %>
+    <tr data-id="<%= link.id %>" data-read="<%= link.read %>" class="link link-read-<%= link.read %>">
+      <td class="editable-title" contenteditable='true'><%= link.title %></td>
+      <td class="editable-url" contenteditable='true'><%= link_to link.url, link.url %></td>
+      <% if link.read %>
+      <td><button class="read-btn">Mark as Unread</button></td>
+    <% else %>
+      <td><button class="read-btn">Mark as Read</button></td>
+      <% end %>
+        <td><%= button_to "Edit Link", edit_link_path(link), method: :get, class: 'edit-btn' %>
+    </tr>
+  <% end %>
+</table>
