@@ -28,7 +28,8 @@ function toggleReadStatus(e) {
   });
 }
 
-function filterBySearch() {
+function filterBySearch(e) {
+  e.preventDefault();
   let searchQuery = $('#search-links').val();
   let links = $('.link');
 
@@ -47,10 +48,20 @@ function filterBySearch() {
 function filterByStatus(e) {
   e.preventDefault();
   let links = $('.link');
-  let status =
+  if (this.id === "read-filter") {
+    let status = true;
+  } else {
+    let status = false;
+  }
+
 
   links.each((link) => {
-    
+    if($(this).hasClass(`read-${status}`) {
+      $(this).hide();
+    } else {
+      $(this).show();
+    }
+    })
   });
 }
 
