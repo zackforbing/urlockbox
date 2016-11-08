@@ -1,7 +1,7 @@
 $(document).ready(() => {
   $('.read-btn').on('click', toggleReadStatus);
   $('#search-links').on('keyup', filterBySearch);
-  $('#unread-filter', '#read-filter').on('click', filterBySearch)
+  $('#unread-filter', '#read-filter').on('click', filterByStatus);
 });
 
 function toggleReadStatus(e) {
@@ -28,12 +28,11 @@ function toggleReadStatus(e) {
   });
 }
 
-function filterBySearch(e) {
-  e.preventDefault();
+function filterBySearch() {
   let searchQuery = $('#search-links').val();
   let links = $('.link');
 
-  links.each((link) => {
+  links.each(function(link) {
     let title = $(this).find(".editable-title").text();
     let url = $(this).find(".editable-url").text();
 
@@ -46,6 +45,7 @@ function filterBySearch(e) {
 }
 
 function filterByStatus(e) {
+  debugger
   e.preventDefault();
   let links = $('.link');
   if (this.id === "read-filter") {
@@ -54,14 +54,13 @@ function filterByStatus(e) {
     let status = false;
   }
 
-
   links.each((link) => {
-    if($(this).hasClass(`read-${status}`) {
+    debugger
+    if($(this).hasClass(`read-${status}`)) {
       $(this).hide();
     } else {
       $(this).show();
     }
-    })
   });
 }
 

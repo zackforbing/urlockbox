@@ -11,9 +11,10 @@
   <% end %>
   <br>
   <input type="text" class="form-control" placeholder="Search Links" id="search-links">
-  <%= button_to "See All Read Links", id: 'read-filter' %>
-  <%= button_to "See All Unread Links", id: 'unread-filter' %>
-  <%= button_to "See All Links", id: 'show-all' %>
+  <button id="read-filter">See All Read Links</button>
+  <button id="unread-filter">See All Unread Links</button>
+  <button id="show-all">See All Links</button>
+  <br>
   <br>
   <table id='link-table'>
     <tr>
@@ -27,9 +28,9 @@
         <td class="editable-title" contenteditable='true'><%= link.title %></td>
         <td class="editable-url" contenteditable='true'><%= link_to link.url, link.url %></td>
         <% if link.read %>
-        <td><%= button_to "Mark as Unread", toggle_read_path(link), method: :put, class: 'read-btn' %></td>
+        <td><button class="read-btn">Mark as Unread</button></td>
       <% else %>
-        <td><%= button_to "Mark as Read", toggle_read_path(link), method: :put, class: 'read-btn' %></td>
+        <td><button class="read-btn">Mark as Read</button></td>
         <% end %>
           <td><%= button_to "Edit Link", edit_link_path(link), method: :get, class: 'edit-btn' %>
       </tr>
