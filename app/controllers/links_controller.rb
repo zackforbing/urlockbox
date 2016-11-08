@@ -8,7 +8,6 @@ class LinksController < ApplicationController
   def create
     link = Link.new(title: params[:link][:title], url: params[:link][:url], user: current_user)
     validate_link(link)
-    # require "pry"; binding.pry
     redirect_to root_path
   end
 
@@ -18,7 +17,7 @@ class LinksController < ApplicationController
 
   def update
     link = Link.find(params[:id])
-    if link.update(link_params)
+    if link.update(link_params) && link.valid?
       flash[:notice] = "'#{link.title}' updated."
     else
       flash[:error] = "'#{link.title}' was not updated."
