@@ -2,14 +2,14 @@ require 'nokogiri'
 
 class WebScraper
   def initialize(url)
-    @page = Nokogiri::HTML(open(url))
+    @doc = Nokogiri::HTML(open(url))
   end
 
   def page_h1
-    @page.css('h1').text
+    @doc.css('h1').text
   end
 
   def page_title
-    @page.css('title').text
+    @doc.css('title')[0].text
   end
 end

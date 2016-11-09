@@ -17,6 +17,7 @@
   <tr>
     <th>Title</th>
     <th>URL</th>
+    <th>Summary</th>
     <th>Read?</th>
     <th>Edit</th>
   </tr>
@@ -24,6 +25,11 @@
     <tr data-id="<%= link.id %>" data-read="<%= link.read %>" class="link link-read-<%= link.read %>">
       <td class="editable-title" contenteditable='true'><%= link.title %></td>
       <td class="editable-url" contenteditable='true'><%= link_to link.url, link.url %></td>
+      <% if link.summary_h1 && link.summary_title %>
+        <td class="summary"><%= link.summary_h1 %>, <%= link.summary_title %></td>
+      <% else %>
+        <td><p>No Summary Available</p></td>
+      <% end %>
       <% if link.read %>
       <td><%= button_to "Mark as Unread", toggle_read_path(link), method: :put, class: 'read-btn' %></td>
         <% else %>
