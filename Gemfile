@@ -28,6 +28,7 @@ gem 'figaro'
 gem 'validate_url'
 gem 'rack_session_access'
 gem 'responders'
+gem 'nokogiri'
 
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development

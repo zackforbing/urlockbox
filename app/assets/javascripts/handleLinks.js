@@ -1,7 +1,8 @@
 $(document).ready(() => {
   $('.read-btn').on('click', toggleReadStatus);
   $('#search-links').on('keyup', filterBySearch);
-  $('#unread-filter', '#read-filter').on('click', filterByStatus);
+  $('#unread-filter, #read-filter').on('click', filterByStatus);
+  $('#show-all').on('click', showAllLinks);
 });
 
 function toggleReadStatus(e) {
@@ -45,22 +46,22 @@ function filterBySearch() {
 }
 
 function filterByStatus(e) {
-  console.log('hi');
   e.preventDefault();
   let links = $('.link');
-  if (this.id === "read-filter") {
-    let status = true;
-  } else {
-    let status = false;
-  }
-
-  links.each((link) => {
-    debugger
-    if($(this).hasClass(`read-${status}`)) {
-      $(this).hide();
+  let status = this.id === "read-filter" ? true : false;
+  links.each((index, link) => {
+    if($(link).hasClass(`link-read-${status}`)) {
+      $(link).hide();
     } else {
-      $(this).show();
+      $(link).show();
     }
+  });
+}
+function showAllLinks(e) {
+  e.preventDefault();
+  let links = $('.link');
+  links.each((index, link) => {
+    $(link).show();
   });
 }
 

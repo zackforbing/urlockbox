@@ -21,6 +21,7 @@ class LinksController < ApplicationController
 
   def update
     link = Link.find(params[:id])
+    require "pry"; binding.pry
     if link.update(link_params) && link.valid?
       flash[:notice] = "'#{link.title}' updated."
     else
