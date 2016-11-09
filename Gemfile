@@ -31,6 +31,7 @@ gem 'responders'
 gem 'nokogiri'
 gem 'sprockets', '>=3.0.0.beta'
 gem 'sprockets-es6'
+gem 'open_uri_redirections'
 
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
