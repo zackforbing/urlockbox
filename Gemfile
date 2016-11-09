@@ -29,6 +29,8 @@ gem 'validate_url'
 gem 'rack_session_access'
 gem 'responders'
 gem 'nokogiri'
+gem 'sprockets', '>=3.0.0.beta'
+gem 'sprockets-es6'
 
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
