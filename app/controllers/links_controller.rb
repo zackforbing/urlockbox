@@ -1,8 +1,12 @@
 class LinksController < ApplicationController
 
   def index
-    @user = current_user
-    @links = current_user.links if current_user
+    if current_user
+      @user = current_user
+      @links = current_user.links.order(title: :asc)
+    else
+      redirect_to login_path
+    end
   end
 
   def create
@@ -25,18 +29,6 @@ class LinksController < ApplicationController
     redirect_to root_path
   end
 
-  def toggle_read
-    link = Link.find(params[:id])
-    if link.read
-      link.read = false
-      link.save
-    else
-      link.read = true
-      link.save
-    end
-    redirect_to root_path
-  end
-
   private
 
   def validate_link(link)
@@ -49,6 +41,6 @@ class LinksController < ApplicationController
   end
 
   def link_params
-    params.require(:link).permit(:title, :url, :read)
+    params.require(:link).permit(:id, :title, :url, :read)
   end
 end

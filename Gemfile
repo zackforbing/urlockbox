@@ -27,6 +27,7 @@ gem 'bcrypt', '~> 3.1.7'
 gem 'figaro'
 gem 'validate_url'
 gem 'rack_session_access'
+gem 'responders'
 
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development

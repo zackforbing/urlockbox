@@ -12,4 +12,10 @@ Rails.application.routes.draw do
   resources :links, only: [:create, :edit, :update]
   get '/links/:id', to: 'links#create'
   put '/links/:id/toggle', to: 'links#toggle_read', as: 'toggle_read'
+
+  namespace 'api' do
+    namespace 'v1' do
+      resources :links, only: [:update]
+    end
+  end
 end
