@@ -12,3 +12,4 @@ class WebScraper
   def page_title
     @page.css('title').text
   end
+end
