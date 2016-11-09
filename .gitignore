@@ -21,3 +21,6 @@
 
 # Ignore SimpleCov files
 coverage
+
+# Ignore Node Modules
+node_modules
