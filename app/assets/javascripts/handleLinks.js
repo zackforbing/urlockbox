@@ -2,6 +2,7 @@ $(document).ready(() => {
   $('.read-btn').on('click', toggleReadStatus);
   $('#search-links').on('keyup', filterBySearch);
   $('#unread-filter, #read-filter').on('click', filterByStatus);
+  $('#show-all').on('click', showAllLinks);
 });
 
 function toggleReadStatus(e) {
@@ -48,13 +49,19 @@ function filterByStatus(e) {
   e.preventDefault();
   let links = $('.link');
   let status = this.id === "read-filter" ? true : false;
-  debugger
-  links.each((link) => {
-    if($(this).hasClass(`read-${status}`)) {
-      $(this).hide();
+  links.each((index, link) => {
+    if($(link).hasClass(`link-read-${status}`)) {
+      $(link).hide();
     } else {
-      $(this).show();
+      $(link).show();
     }
+  });
+}
+function showAllLinks(e) {
+  e.preventDefault();
+  let links = $('.link');
+  links.each((index, link) => {
+    $(link).show();
   });
 }
 
