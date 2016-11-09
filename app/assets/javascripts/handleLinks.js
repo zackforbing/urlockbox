@@ -1,7 +1,7 @@
 $(document).ready(() => {
   $('.read-btn').on('click', toggleReadStatus);
   $('#search-links').on('keyup', filterBySearch);
-  $('#unread-filter', '#read-filter').on('click', filterByStatus);
+  $('#unread-filter, #read-filter').on('click', filterByStatus);
 });
 
 function toggleReadStatus(e) {
@@ -45,15 +45,10 @@ function filterBySearch() {
 }
 
 function filterByStatus(e) {
-  console.log('hi');
   e.preventDefault();
   let links = $('.link');
-  if (this.id === "read-filter") {
-    let status = true;
-  } else {
-    let status = false;
-  }
-
+  let status = this.id === "read-filter" ? true : false;
+  debugger
   links.each((link) => {
     if($(this).hasClass(`read-${status}`)) {
       $(this).hide();

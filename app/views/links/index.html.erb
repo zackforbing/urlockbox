@@ -1,4 +1,4 @@
-<h6><%= "Logged in as #{current_user.email}" %> <%= link_to "Sign Out", logout_path, method: :delete %></h6>
+<h3><%= "Logged in as #{current_user.email}" %> <%= link_to "Sign Out", logout_path, method: :delete %></h6>
 <%= form_for(:link, url: links_path) do |f| %>
   <%= f.label :title %>
   <%= f.text_field :title %>
