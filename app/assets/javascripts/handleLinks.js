@@ -55,7 +55,6 @@ function filterByStatus(e) {
   }
 
   links.each((link) => {
-    debugger
     if($(this).hasClass(`read-${status}`)) {
       $(this).hide();
     } else {

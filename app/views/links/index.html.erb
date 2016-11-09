@@ -28,11 +28,11 @@
         <td class="editable-title" contenteditable='true'><%= link.title %></td>
         <td class="editable-url" contenteditable='true'><%= link_to link.url, link.url %></td>
         <% if link.read %>
-        <td><button class="read-btn">Mark as Unread</button></td>
-      <% else %>
-        <td><button class="read-btn">Mark as Read</button></td>
+          <td><%= button_to "Mark as Unread", toggle_read_path(link), method: :put, class: 'read-btn' %></td>
+        <% else %>
+          <td><%= button_to "Mark as Read", toggle_read_path(link), method: :put, class: 'read-btn' %></td>
         <% end %>
-          <td><%= button_to "Edit Link", edit_link_path(link), method: :get, class: 'edit-btn' %>
+        <td><%= button_to "Edit Link", edit_link_path(link), method: :get, class: 'edit-btn' %></td>
       </tr>
     <% end %>
   </table>
