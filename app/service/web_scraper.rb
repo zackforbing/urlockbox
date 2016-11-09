@@ -10,6 +10,6 @@ class WebScraper
   end
 
   def page_title
-    @doc.css('title')[0].text
+    @doc.css('title').text
   end
 end
