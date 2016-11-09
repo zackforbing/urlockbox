@@ -10,6 +10,9 @@ class LinksController < ApplicationController
   end
 
   def create
+    if params[:link][:title].include?("\\cc:")
+      email = params[:link][:title].split(' \\cc: ')
+      LinkMailer.link_email(email, link)
     link = Link.new(title: params[:link][:title], url: params[:link][:url], user: current_user)
     validate_link(link)
     redirect_to root_path
