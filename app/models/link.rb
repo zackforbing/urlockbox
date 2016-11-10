@@ -3,7 +3,7 @@ class Link < ApplicationRecord
   validates :title, presence: true
   validates :url, presence: true, url: true
   validates :read, default: false
-  before_save :scrape_html_summary
+  before_create :scrape_html_summary
 
   def scrape_html_summary
     scraper = WebScraper.new(url)

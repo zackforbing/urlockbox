@@ -11,6 +11,7 @@
 <button id="unread-filter">See All Read Links</button>
 <button id="read-filter">See All Unread Links</button>
 <button id="show-all">See All Links</button>
+<button id="alpha">Sort Alphabetically</button>
 <br>
 <br>
 <table id='link-table'>
@@ -22,7 +23,7 @@
     <th>Edit</th>
   </tr>
   <% @links.each do |link| %>
-    <tr data-id="<%= link.id %>" data-read="<%= link.read %>" class="link link-read-<%= link.read %>">
+    <tr data-id="<%= link.id %>" class="link link-read-<%= link.read %>">
       <td class="editable-title" contenteditable='true'><%= link.title %></td>
       <td class="editable-url" contenteditable='true'><%= link_to link.url, link.url %></td>
       <% if link.summary_h1 && link.summary_title %>

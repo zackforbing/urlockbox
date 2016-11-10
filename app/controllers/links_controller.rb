@@ -3,7 +3,7 @@ class LinksController < ApplicationController
   def index
     if current_user
       @user = current_user
-      @links = current_user.links.order(title: :asc)
+      @links = current_user.links
     else
       redirect_to login_path
     end

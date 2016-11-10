@@ -3,6 +3,7 @@ $(document).ready(() => {
   $('#search-links').on('keyup', filterBySearch);
   $('#unread-filter, #read-filter').on('click', filterByStatus);
   $('#show-all').on('click', showAllLinks);
+  $('#alpha').on('click', alphabetSort);
 });
 
 function toggleReadStatus(e) {
@@ -17,13 +18,13 @@ function toggleReadStatus(e) {
   })
   .fail(handleError)
   .success(() => {
-    if ($link.data("read")) {
-      $link.data("read",false);
+    if ($link.hasClass('link-read-true')) {
       $link.find('.read-btn').prop('value', 'Mark as Read');
       $link.removeClass('link-read-true');
+      $link.addClass('link-read-false');
     } else {
-      $link.data("read",true);
       $link.find('.read-btn').prop('value', 'Mark as Unread');
+      $link.removeClass('link-read-false');
       $link.addClass('link-read-true');
     }
   });
@@ -63,6 +64,16 @@ function showAllLinks(e) {
   links.each((index, link) => {
     $(link).show();
   });
+}
+
+function alphabetSort(e) {
+  e.preventDefault();
+  let links = $('.link');
+
+  links.sort((a, b) => {
+    return $(a).find('.editable-title').text().toLowerCase().localeCompare($(b).find('.editable-title').text().toLowerCase());
+  });
+  $.each(links, (index, link) => { $('#link-table').find('tbody').append(link); });
 }
 
 function handleError(error) {
